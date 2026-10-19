@@ -136,7 +136,7 @@ spec:
               mountPath: /etc/dynamic-networks-controller/
               readOnly: true
             - name: multus-server-socket
-              mountPath: /host/run/multus
+              mountPath: /host/run/multus/multus.sock
             - name: cri-socket
               mountPath: /host/run/crio/crio.sock
           terminationMessagePolicy: FallbackToLogsOnError
@@ -150,8 +150,8 @@ spec:
                 path: dynamic-networks-config.json
         -  name: multus-server-socket
            hostPath:
-             path: /run/multus
-             type: Directory
+             path: /run/multus/multus.sock
+             type: Socket
         -  name: cri-socket
            hostPath:
              path: /run/crio/crio.sock
